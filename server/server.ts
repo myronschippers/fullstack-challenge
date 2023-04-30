@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
+import { parseCustomerCsv } from './csvService';
 
 dotenv.config();
 
@@ -8,6 +9,11 @@ const app: Express = express();
 
 app.get('/', (req: Request, res: Response) => {
   res.send('SUPER!!! Server is running.');
+});
+
+app.get('/csv-customers', (req: Request, res: Response) => {
+  parseCustomerCsv();
+  res.send('HOOK UP CSV Processing for Customers Data');
 });
 
 app.listen(PORT, () => {
