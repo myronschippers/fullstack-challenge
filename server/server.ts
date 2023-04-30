@@ -11,8 +11,8 @@ app.get('/', (req: Request, res: Response) => {
   res.send('SUPER!!! Server is running.');
 });
 
-app.get('/csv-customers', (req: Request, res: Response) => {
-  parseCustomerCsv();
+app.get('/csv-customers', async (req: Request, res: Response) => {
+  await parseCustomerCsv();
   res.send('HOOK UP CSV Processing for Customers Data');
 });
 
