@@ -2,10 +2,10 @@
 
 CREATE TABLE "customers" (
   "id" UUID NOT NULL PRIMARY KEY,
-  "first_name" VARCHAR(150) NOT NULL,
-  "last_name" VARCHAR(150) NOT NULL,
-  "created_at" TIMESTAMP NOT NULL,
-  "updated_at" TIMESTAMP NOT NULL,
+  "firstName" VARCHAR(150) NOT NULL,
+  "lastName" VARCHAR(150) NOT NULL,
+  "createdAt" TIMESTAMP NOT NULL,
+  "updatedAt" TIMESTAMP NOT NULL,
   UNIQUE(id)
 );
 
@@ -15,20 +15,20 @@ CREATE TABLE "customers" (
 CREATE TABLE "purchases" (
   "id" UUID NOT NULL PRIMARY KEY,
   "invoice" VARCHAR(20),
-  "total_sale_amount" MONEY NOT NULL,
-  "invoice_date" TIMESTAMP NOT NULL,
-  "delivery_date" TIMESTAMP,
+  "totalSaleAmount" MONEY NOT NULL,
+  "invoiceDate" TIMESTAMP NOT NULL,
+  "deliveryDate" TIMESTAMP,
   "name" VARCHAR(150) NOT NULL,
   "description" TEXT NOT NULL,
   "sku" VARCHAR(10) NOT NULL,
-  "protection_plan_name" VARCHAR(150),
-  "protection_plan_duration" INTEGER,
-  "protection_plan_price" MONEY,
-  "protection_plan_sku" VARCHAR(20),
-  "protection_plan_period" VARCHAR(10),
-  "customer_id" UUID REFERENCES customers (id) NOT NULL,
-  "created_at" TIMESTAMP NOT NULL,
-  "updated_at" TIMESTAMP NOT NULL,
+  "protectionPlanName" VARCHAR(150),
+  "protectionPlanDuration" INTEGER,
+  "protectionPlanPrice" MONEY,
+  "protectionPlanSku" VARCHAR(20),
+  "protectionPlanPeriod" VARCHAR(10),
+  "customerId" UUID REFERENCES customers (id) NOT NULL,
+  "createdAt" TIMESTAMP NOT NULL,
+  "updatedAt" TIMESTAMP NOT NULL,
   UNIQUE(id)
 );
 
@@ -40,12 +40,12 @@ CREATE TABLE "claims" (
   "id" UUID NOT NULL PRIMARY KEY,
   "status" VARCHAR(50) NOT NULL,
   "solution" VARCHAR(50) NOT NULL,
-  "created_at" TIMESTAMP NOT NULL,
-  "updated_at" TIMESTAMP NOT NULL,
-  "customer_id" UUID REFERENCES customers (id) NOT NULL,
-  "product_purchase_id" UUID REFERENCES purchases (id) NOT NULL,
-  "product_condition" VARCHAR(2) NOT NULL,
-  "damage_description" TEXT,
-  "damage_date" DATE NOT NULL,
-  UNIQUE(id, product_purchase_id)
+  "createdAt" TIMESTAMP NOT NULL,
+  "updatedAt" TIMESTAMP NOT NULL,
+  "customerId" UUID REFERENCES customers (id) NOT NULL,
+  "productPurchaseId" UUID REFERENCES purchases (id) NOT NULL,
+  "productCondition" VARCHAR(2) NOT NULL,
+  "damageDescription" TEXT,
+  "damageDate" DATE NOT NULL,
+  UNIQUE(id, productPurchaseId)
 );
