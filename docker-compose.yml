@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  ##
+  ## CONTAINER for Postgres database
+  ## database access URL:
+  ##     postgres://POSTGRES_USER:POSTGRES_PASSWORD@localhost:HOST_PORT/POSTGRES_DB
+  ## to test service run:
+  ##     docker-compose up --build -d database
+  ## ----------------------------------------
+  database:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 54320:5432
+    environment:
+      POSTGRES_USER: dockerpguser
+      POSTGRES_PASSWORD: t3st3r0fThings!
+      POSTGRES_DB: challenge_solution
+      POSTGRES_HOST: localhost
+    volumes:
+      - ./database/postgres/docker-entrypoint-initdb:/docker-entrypoint-initdb.d/
