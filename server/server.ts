@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import multer from 'multer';
 import { parseCustomerCsv } from './csvService';
-import pool from './module/pool';
+import pool from './modules/pool';
 
 dotenv.config();
 
