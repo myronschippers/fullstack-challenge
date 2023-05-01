@@ -2,11 +2,9 @@ version: '3'
 
 services:
   ##
-  ## CONTAINER for Postgres database
+  ## CONTAINER for PostgreSQL database
   ## database access URL:
   ##     postgres://POSTGRES_USER:POSTGRES_PASSWORD@localhost:HOST_PORT/POSTGRES_DB
-  ## to test service run:
-  ##     docker-compose up --build -d database
   ## ----------------------------------------
   database:
     image: postgres:latest
@@ -20,3 +18,25 @@ services:
       POSTGRES_HOST: localhost
     volumes:
       - ./database/postgres/docker-entrypoint-initdb:/docker-entrypoint-initdb.d/
+  ##
+  ## CONTAINER for Server Application
+  ## to test service run:
+  ##     docker-compose up --build -d server
+  ## ----------------------------------------
+  server:
+    build:
+      context: ./server
+    ports:
+      - 8080:8080 # expose ports - HOST:CONTAINER
+    environment:
+      PORT_DB: 5432
+      POSTGRES_USER: dockerpguser
+      POSTGRES_PASSWORD: t3st3r0fThings!
+      POSTGRES_DB: challenge_solution
+      POSTGRES_HOST: database
+    volumes:
+      - './server:/app/server'
+      - '/app/server/node_modules'
+    depends_on:
+      - database
+    command: npm run server:dev
