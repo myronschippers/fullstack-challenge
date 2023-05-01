@@ -5,7 +5,7 @@
 Code challenge solution for hiring process.
 
 **The Problem:**
-Reguard is in the process of onboarding a new warranty provider. They are looking to ingest their list of active purchases and make it available to the provider’s clients. With this access, the clients can manage their claims and monitor their claim status. Admins will have access to reports and the ability to monitor claim progress through the fulfillment pipeline. These purchases are sourced from the provider’s internal systems, which have few (if any) validation capabilities built in.
+A Company is in the process of onboarding a new warranty provider. They are looking to ingest their list of active purchases and make it available to the provider’s clients. With this access, the clients can manage their claims and monitor their claim status. Admins will have access to reports and the ability to monitor claim progress through the fulfillment pipeline. These purchases are sourced from the provider’s internal systems, which have few (if any) validation capabilities built in.
 
 The data set consists of three tables - Purchases, Customers, and Claims.
 
