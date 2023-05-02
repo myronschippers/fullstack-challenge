@@ -18,3 +18,7 @@ export interface PurchaseCsv {
   createdAt: Date; // TIMESTAMP
   updatedAt: Date; // TIMESTAMP
 }
+
+export interface PurchasesFullCount {
+  count: number;
+}

@@ -1,6 +1,6 @@
 import format from 'pg-format';
 import { pool } from '../../modules/pool.module';
-import { PurchaseCsv } from './purchase.model';
+import { PurchaseCsv, PurchasesFullCount } from './purchase.model';
 
 export class PurchasesController {
   static tableName = 'purchases';
@@ -51,5 +51,20 @@ export class PurchasesController {
     );
 
     await pool.query(formattedQuery);
+  }
+
+  /**
+   * Retrieves a count of the total number of purchases in the database.
+   * @returns { count: number }
+   */
+  public static async readFullCount(): Promise<PurchasesFullCount> {
+    const queryText = `
+      SELECT COUNT(*)
+      FROM ${PurchasesController.tableName}
+    `;
+
+    const dbResponse = await pool.query(queryText);
+
+    return dbResponse.rows[0];
   }
 }

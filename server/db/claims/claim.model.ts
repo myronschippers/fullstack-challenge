@@ -12,3 +12,7 @@ export interface ClaimCsv {
   damageDescription: string; // TEXT
   damageDate: Date; // DATE
 }
+
+export interface ClaimsFullCount {
+  count: number;
+}

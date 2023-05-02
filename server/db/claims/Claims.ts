@@ -1,6 +1,6 @@
 import format from 'pg-format';
 import { pool } from '../../modules/pool.module';
-import { ClaimCsv } from './claim.model';
+import { ClaimCsv, ClaimsFullCount } from './claim.model';
 import { CustomersController } from '../customers';
 
 export class ClaimsController {
@@ -61,5 +61,20 @@ export class ClaimsController {
     await pool.query(formattedQuery);
 
     return csvClaimsWithNoMatchingCustomer;
+  }
+
+  /**
+   * Retrieves a count of the total number of customers in the database.
+   * @returns { count: number }
+   */
+  public static async readFullCount(): Promise<ClaimsFullCount> {
+    const queryText = `
+      SELECT COUNT(*)
+      FROM ${ClaimsController.tableName}
+    `;
+
+    const dbResponse = await pool.query(queryText);
+
+    return dbResponse.rows[0];
   }
 }
