@@ -1,2 +1,2 @@
-export { CustomerCsv } from './customer.dto';
+export { CustomerCsv } from './customer.model';
 export { CustomersController } from './Customer';
