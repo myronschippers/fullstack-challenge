@@ -1,3 +1,4 @@
+import { UUID } from 'crypto';
 import format from 'pg-format';
 import { pool } from '../../modules/pool.module';
 import { ClaimCsv, ClaimsFullCount } from './claim.model';
@@ -64,7 +65,7 @@ export class ClaimsController {
   }
 
   /**
-   * Retrieves a count of the total number of customers in the database.
+   * Retrieves a count of the total number of claims in the database.
    * @returns { count: number }
    */
   public static async readFullCount(): Promise<ClaimsFullCount> {
@@ -76,5 +77,18 @@ export class ClaimsController {
     const dbResponse = await pool.query(queryText);
 
     return dbResponse.rows[0];
+  }
+
+  public static async readForCustomer(customerId: UUID) {
+    const queryText = `
+      SELECT *
+      FROM ${ClaimsController.tableName}
+      WHERE "customerId" = $1;
+    `;
+
+    const dbResponse = await pool.query(queryText, [customerId]);
+    const customerClaims = dbResponse.rows;
+
+    return customerClaims;
   }
 }

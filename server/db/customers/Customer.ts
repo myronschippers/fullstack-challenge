@@ -1,7 +1,9 @@
+import { UUID } from 'crypto';
 import format from 'pg-format';
 import { pool } from '../../modules/pool.module';
 import {
   CustomerCsv,
+  CustomerDb,
   CustomersPaginated,
   CustomerFullCount,
 } from './customer.model';
@@ -78,5 +80,26 @@ export class CustomersController {
       currentPage: page,
       customers,
     };
+  }
+
+  /**
+   * Search for a customer that matches the provided ID.
+   * In case of match send back the record otherwise send back undefined.
+   * @param customerId UUID
+   * @returns CustomerDb | undefined
+   */
+  public static async readCustomer(
+    customerId: UUID
+  ): Promise<CustomerDb | undefined> {
+    const queryText = `
+      SELECT *
+      FROM ${CustomersController.tableName}
+      WHERE "id" = $1;
+    `;
+
+    const dbResponse = await pool.query(queryText, [customerId]);
+    const matchedCustomer = dbResponse.rows[0];
+
+    return matchedCustomer ? matchedCustomer : undefined;
   }
 }

@@ -1,4 +1,5 @@
 import { UUID } from 'crypto';
+import { CustomerDb } from '../customers';
 
 export interface ClaimCsv {
   id: UUID; // UUID
@@ -13,6 +14,13 @@ export interface ClaimCsv {
   damageDate: Date; // DATE
 }
 
+export interface ClaimDb extends ClaimCsv {}
+
 export interface ClaimsFullCount {
   count: number;
+}
+
+export interface CustomerClaims {
+  customer: CustomerDb;
+  claims: ClaimDb[];
 }

@@ -1,2 +1,2 @@
-export { CustomerCsv } from './customer.model';
+export { CustomerCsv, CustomerDb } from './customer.model';
 export { CustomersController } from './Customer';
