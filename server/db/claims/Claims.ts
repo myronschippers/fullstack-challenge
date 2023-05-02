@@ -16,9 +16,7 @@ export class ClaimsController {
         SELECT * FROM ${CustomersController.tableName}
         WHERE id = '${csvClaim.customerId}';
         `;
-        console.log('[CHECK CLAIM]:', queryText);
         const customersResponse = await pool.query(queryText);
-        console.log('[CHECK CLAIM]:', customersResponse);
 
         if (customersResponse.rows.length > 0) {
           return true;

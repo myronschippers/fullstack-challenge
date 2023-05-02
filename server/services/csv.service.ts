@@ -1,8 +1,8 @@
 import { createReadStream } from 'streamifier';
 import { parse } from 'csv';
-import { CustomersController, CustomerCsv } from './db/customers';
-import { PurchasesController, PurchaseCsv } from './db/purchases';
-import { ClaimsController, ClaimCsv } from './db/claims';
+import { CustomersController, CustomerCsv } from '../db/customers';
+import { PurchasesController, PurchaseCsv } from '../db/purchases';
+import { ClaimsController, ClaimCsv } from '../db/claims';
 
 const csvReadStreamPromise = <DbModelType, ReturnType>(
   csvFile: Express.Multer.File,
