@@ -41,7 +41,7 @@ CREATE TABLE claims (
   "createdAt" TIMESTAMP NOT NULL,
   "updatedAt" TIMESTAMP NOT NULL,
   "customerId" UUID REFERENCES customers (id) NOT NULL,
-  "productPurchaseId" UUID REFERENCES purchases (id) NOT NULL UNIQUE,
+  "productPurchaseId" UUID REFERENCES purchases (id) NOT NULL,
   "productCondition" VARCHAR(2) NOT NULL,
   "damageDescription" TEXT,
   "damageDate" DATE NOT NULL

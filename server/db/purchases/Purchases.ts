@@ -8,7 +8,7 @@ export class PurchasesController {
   public static async createInBulk(
     purchaseCsvRecords: PurchaseCsv[]
   ): Promise<void> {
-    const customerCsvValuesOnly = purchaseCsvRecords.map((csvPurchase) => {
+    const purchasesCsvValuesOnly = purchaseCsvRecords.map((csvPurchase) => {
       return [
         csvPurchase.id,
         csvPurchase.invoice,
@@ -47,7 +47,7 @@ export class PurchasesController {
         "createdAt",
         "updatedAt"
       ) VALUES %L`,
-      customerCsvValuesOnly
+      purchasesCsvValuesOnly
     );
 
     await pool.query(formattedQuery);

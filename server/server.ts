@@ -2,7 +2,11 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import multer from 'multer';
-import { parseCustomerCsv, parsePurchasesCsv } from './csvService';
+import {
+  parseCustomerCsv,
+  parsePurchasesCsv,
+  parseClaimsCsv,
+} from './csvService';
 
 dotenv.config();
 
@@ -35,6 +39,8 @@ const postCsvFileCallback = (
           break;
         case 'purchases':
           await parsePurchasesCsv(req.file);
+        case 'claims':
+          await parseClaimsCsv(req.file);
       }
 
       return res.send(201);
@@ -57,6 +63,12 @@ app.post(
   '/csv-upload/purchases',
   upload.single('purchases'),
   postCsvFileCallback('purchases')
+);
+
+app.post(
+  '/csv-upload/claims',
+  upload.single('claims'),
+  postCsvFileCallback('claims')
 );
 
 app.listen(PORT, () => {
