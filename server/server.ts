@@ -21,19 +21,6 @@ app.get('/', (req: Request, res: Response) => {
   res.send('SUPER!!! Server is running.');
 });
 
-// test DB connection
-app.get('/first-customer', async (req: Request, res: Response) => {
-  try {
-    const queryText = `SELECT * FROM customers LIMIT 1;`;
-    const customersResponse = await pool.query(queryText);
-
-    res.send(customersResponse.rows);
-  } catch (err) {
-    res.status(500);
-    res.send({ error_message: err });
-  }
-});
-
 app.post(
   '/csv-upload/customers',
   upload.single('customers'),
