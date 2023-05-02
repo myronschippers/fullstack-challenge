@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import csvUploadRouter from './routes/csvUpload.routes';
 import customersRouter from './routes/customers.routes';
+import aggregateRouter from './routes/aggregate.router';
 
 dotenv.config();
 
@@ -21,8 +22,8 @@ app.use(bodyParser.json());
 // REGISTER ROUTES
 // --------------------
 app.use('/csv-upload', csvUploadRouter);
-// TODO: Create a route to GET the total count of "purchases", "claims", & "customers"
-app.use('/customers', customersRouter);
+app.use('/api/aggregate', aggregateRouter);
+app.use('/api/customers', customersRouter);
 // TODO: Create a route to GET all "claims" for a single "customer"
 
 //
