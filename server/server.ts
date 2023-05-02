@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import multer from 'multer';
 import { parseCustomerCsv } from './csvService';
-import pool from './modules/pool';
+import { pool } from './modules/pool.module';
 
 dotenv.config();
 
@@ -44,7 +44,7 @@ app.post(
 
     try {
       await parseCustomerCsv(req.file);
-      return res.send('Processed Customers Data');
+      return res.send(201);
     } catch (err) {
       console.log(err);
       res.status(500).send({
