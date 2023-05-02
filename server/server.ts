@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import csvUploadRouter from './routes/csvUpload.routes';
+import customersRouter from './routes/customers.routes';
 
 dotenv.config();
 
@@ -20,6 +21,10 @@ app.use(bodyParser.json());
 // REGISTER ROUTES
 // --------------------
 app.use('/csv-upload', csvUploadRouter);
+// TODO: Create a route to GET the total count of "purchases", "claims", & "customers"
+// TODO: Create a route to GET a list of "customers" that is paginated
+app.use('/customers', customersRouter);
+// TODO: Create a route to GET all "claims" for a single "customer"
 
 //
 // CLIENT APP REGISTRATION
