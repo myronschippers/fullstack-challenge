@@ -1,7 +1,7 @@
 import { createReadStream } from 'streamifier';
 import { parse } from 'csv';
-import { CustomersController } from './db/customers';
-import { CustomerCsv } from './db/customers/customer.dto';
+import { CustomersController, CustomerCsv } from './db/customers';
+import { PurchasesController, PurchaseCsv } from './db/purchases';
 
 const csvReadStreamPromise = <DbModelType>(
   csvFile: Express.Multer.File,
@@ -25,7 +25,9 @@ const csvReadStreamPromise = <DbModelType>(
   });
 };
 
-const parseCustomerCsv = async (customersCsvFile: Express.Multer.File) => {
+export const parseCustomerCsv = async (
+  customersCsvFile: Express.Multer.File
+) => {
   try {
     const parseResponse = await csvReadStreamPromise<CustomerCsv[]>(
       customersCsvFile,
@@ -38,4 +40,17 @@ const parseCustomerCsv = async (customersCsvFile: Express.Multer.File) => {
   }
 };
 
-export { parseCustomerCsv };
+export const parsePurchasesCsv = async (
+  purchasesCsvFile: Express.Multer.File
+) => {
+  try {
+    const parseResponse = await csvReadStreamPromise<PurchaseCsv[]>(
+      purchasesCsvFile,
+      PurchasesController.createInBulk
+    );
+    return parseResponse;
+  } catch (err) {
+    console.log('parseCustomerCsv ERROR::', err);
+    throw new Error('Error parsing Customers CSV File.');
+  }
+};

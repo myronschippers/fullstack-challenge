@@ -2,8 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import multer from 'multer';
-import { parseCustomerCsv } from './csvService';
-import { pool } from './modules/pool.module';
+import { parseCustomerCsv, parsePurchasesCsv } from './csvService';
 
 dotenv.config();
 
@@ -21,16 +20,23 @@ app.get('/', (req: Request, res: Response) => {
   res.send('SUPER!!! Server is running.');
 });
 
-app.post(
-  '/csv-upload/customers',
-  upload.single('customers'),
-  async (req: Request, res: Response) => {
+const postCsvFileCallback = (
+  fileType: 'customers' | 'purchases' | 'claims'
+) => {
+  return async (req: Request, res: Response) => {
     if (req.file == undefined) {
       return res.status(400).send('Please upload a CSV file for Customers!');
     }
 
     try {
-      await parseCustomerCsv(req.file);
+      switch (fileType) {
+        case 'customers':
+          await parseCustomerCsv(req.file);
+          break;
+        case 'purchases':
+          await parsePurchasesCsv(req.file);
+      }
+
       return res.send(201);
     } catch (err) {
       console.log(err);
@@ -38,7 +44,19 @@ app.post(
         message: 'Failed to upload the file: ' + req.file.originalname,
       });
     }
-  }
+  };
+};
+
+app.post(
+  '/csv-upload/customers',
+  upload.single('customers'),
+  postCsvFileCallback('customers')
+);
+
+app.post(
+  '/csv-upload/purchases',
+  upload.single('purchases'),
+  postCsvFileCallback('purchases')
 );
 
 app.listen(PORT, () => {
