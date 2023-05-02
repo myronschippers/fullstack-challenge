@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import claimsRouter from './routes/claims.router';
 import csvUploadRouter from './routes/csvUpload.routes';
 import customersRouter from './routes/customers.routes';
 import aggregateRouter from './routes/aggregate.router';
@@ -24,7 +25,7 @@ app.use(bodyParser.json());
 app.use('/csv-upload', csvUploadRouter);
 app.use('/api/aggregate', aggregateRouter);
 app.use('/api/customers', customersRouter);
-// TODO: Create a route to GET all "claims" for a single "customer"
+app.use('/api/claims', claimsRouter);
 
 //
 // CLIENT APP REGISTRATION
