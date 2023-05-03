@@ -31,7 +31,7 @@ export class ClaimsController {
       (csvClaim) => {
         return [
           csvClaim.id,
-          csvClaim.status,
+          csvClaim.status ? csvClaim.status : 'NONE',
           csvClaim.solution,
           csvClaim.createdAt,
           csvClaim.updatedAt,

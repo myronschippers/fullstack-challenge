@@ -9,6 +9,7 @@
   },
   "author": "Myron R Schippers Jr",
   "license": "ISC",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "body-parser": "^1.20.2",
     "csv": "^6.2.10",
