@@ -31,11 +31,11 @@ The project is setup using Docker containers so that local dependencies are take
 
 1. run `docker compose up`
 1. validate the server is running
-  - navigate to `http://localhost:8080/` in your web browser
-  - should see the text "SUPER!!! Server is running." printed on the page
+    - navigate to `http://localhost:8080/` in your web browser
+    - should see the text "SUPER!!! Server is running." printed on the page
 1. validate the front-end is running
-  - navigate to `http://localhost:3000/` in your web browser
-  - should see the application running with "Fullstack Challenge" displayed in the header
+    - navigate to `http://localhost:3000/` in your web browser
+    - should see the application running with "Fullstack Challenge" displayed in the header
 
 ## Usage
 

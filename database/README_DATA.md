@@ -21,13 +21,13 @@ environment:
 I recommend Postman for testing the CSV Upload endpoints. For each endpoint follow these same steps to test the upload of the corresponding CSV.
 
 1. enter in the appropriate URL
-  - ![Postman - CSV Upload URL](../documentation/data-csv-upload-customers-url.png)
+    - ![Postman - CSV Upload URL](../documentation/data-csv-upload-customers-url.png)
 1. click on the **Body** tab under the URL
 1. select the `form-data` from the list of options
 1. under the `Key` column if you hover over the right side of the first field/cell you'll see an option show up that says `Text`
-  - click on the `Text` option and select `File`
-  - to the right in the in the `Value` column you should now have the option to `Select a File`
-  - ![Postman - CSV Upload URL](../documentation/data-csv-upload-customers-form-data.png)
+    - click on the `Text` option and select `File`
+    - to the right in the in the `Value` column you should now have the option to `Select a File`
+    - ![Postman - CSV Upload URL](../documentation/data-csv-upload-customers-form-data.png)
 
 
 ## Customers
