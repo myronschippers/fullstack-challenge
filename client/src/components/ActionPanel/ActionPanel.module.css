@@ -1,0 +1,11 @@
+.panel {
+  padding: 2rem;
+  border-radius: 3px;
+  background-color: var(--color-panel);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.panel:hover {
+  background-color: var(--color-panel-hover);
+}
