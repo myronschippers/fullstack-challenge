@@ -1,5 +1,7 @@
 .panel {
+  box-sizing: border-box;
   padding: 2rem;
+  border: 1px solid var(--color-panel);
   border-radius: 3px;
   background-color: var(--color-panel);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
@@ -8,4 +10,10 @@
 
 .panel:hover {
   background-color: var(--color-panel-hover);
+  border-color: var(--color-panel-hover);
+}
+
+.isSelect {
+  background-color: var(--color-panel);
+  border-color: var(--color-panel-selected);
 }

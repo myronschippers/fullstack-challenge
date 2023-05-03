@@ -29,7 +29,15 @@ export const fetchCustomers = createAsyncThunk(
 export const customersSlice = createSlice({
   name: 'customers',
   initialState,
-  reducers: {},
+  reducers: {
+    selectCustomer: (state, action: PayloadAction<Customer>) => {
+      if (state.selected !== null && state.selected.id === action.payload.id) {
+        state.selected = null;
+      } else {
+        state.selected = action.payload;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCustomers.pending, (state: CustomersState) => {
       state.loading = 'pending';
@@ -49,4 +57,5 @@ export const customersSlice = createSlice({
   },
 });
 
+export const { selectCustomer } = customersSlice.actions;
 export default customersSlice.reducer;
