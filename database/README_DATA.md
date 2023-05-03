@@ -1,8 +1,79 @@
-# ERD for Customers, Purchases, & Claims
+# Part 1, Data
+
+The uploaded CSV data is stored in a PostgreSQL Database. An individual endpoint was created for each of the different CSVs. Follow the details in the following sections after the application is up and running locally.
+
+> NOTE: Because not all validation is in place it is recommended to upload the CSV file in order of `customers` then `purchases` and finally `claims`.
+
+## Connecting to a GUI
+
+The tool that I used for local testing was [Postico](https://eggerapps.at/postico2/). The connection values can be found in the project directory structure at the root of the project in `docker-compose.yml`. They are hard coded in because there was no need to plan ahead for deployment.
+
+```
+environment:
+  POSTGRES_USER: dockerpguser
+  POSTGRES_PASSWORD: t3st3r0fThings!
+  POSTGRES_DB: challenge_solution
+  POSTGRES_HOST: localhost
+```
+
+## CSV Upload Endpoints
+
+I recommend Postman for testing the CSV Upload endpoints. For each endpoint follow these same steps to test the upload of the corresponding CSV.
+
+1. enter in the appropriate URL
+  - ![Postman - CSV Upload URL](data-csv-upload-customers-url.png)
+1. click on the **Body** tab under the URL
+1. select the `form-data` from the list of options
+1. under the `Key` column if you hover over the right side of the first field/cell you'll see an option show up that says `Text`
+  - click on the `Text` option and select `File`
+  - to the right in the in the `Value` column you should now have the option to `Select a File`
+  - ![Postman - CSV Upload URL](data-csv-upload-customers-form-data.png)
+
+
+## Customers
+
+![Postman - CSV Upload for Customers](data-csv-upload-customers.png)
+
+**URL path:**
+- `/csv-upload/customers`
+
+![Postman - CSV Upload, Customers URL](data-csv-upload-customers-url.png)
+
+> NOTE: Data file can be found at `database/data-files/customers.csv` in the project directory.
+
+![Postman - CSV Upload, Customers Form Data](data-csv-upload-customers-form-data.png)
+
+## Purchases
+
+![Postman - CSV Upload for Purchases](data-csv-upload-purchases.png)
+
+**URL path:**
+- `/csv-upload/purchases`
+
+![Postman - CSV Upload, Purchases URL](data-csv-upload-purchases-url.png)
+
+> NOTE: Data file can be found at `database/data-files/purchases.csv` in the project directory.
+
+![Postman - CSV Upload, Purchases Form Data](data-csv-upload-purchases-form-data.png)
+
+## Claims
+
+![Postman - CSV Upload for Claims](data-csv-upload-claims.png)
+
+**URL path:**
+- `/csv-upload/claims`
+
+![Postman - CSV Upload, Claims URL](data-csv-upload-claims-url.png)
+
+> NOTE: Data file can be found at `database/data-files/claims.csv` in the project directory.
+
+![Postman - CSV Upload, Claims Form Data](data-csv-upload-claims-form-data.png)
+
+## Data Structure
 
 The ERDs were created using [dbdiagram](https://dbdiagram.io/). The scripts below are [DBML](https://dbml.dbdiagram.io/docs/) (database markup language) that is used on [dbdiagram](https://dbdiagram.io/) in order to render the ERDs. The below scripts can be copied and pasted into the [dbdiagram](https://dbdiagram.io/) app to render the ERDs that are depicted below.
 
-## Basic Structure
+### Basic Structure
 
 A more basic data structure following strictly the Customer, Purchases, and Claims table structure from the challenge instructions.
 
@@ -61,7 +132,9 @@ Ref: "purchases"."id" < "claims"."product_purchase_id"
 Ref: "customers"."id" < "purchases"."customer_id"
 ```
 
-## More Complex Structure
+> NOTE: Probably need a junction table for `claims` and `purchases` because it seems like it is meant to be a **many to many** relationship.
+
+### More Complex Structure
 
 ![Complex ERD](./data-structure-complex.png)
 
@@ -161,3 +234,4 @@ Ref: "protection_plans"."id" < "purchases"."protection_plan_id"
 
 Ref: "products"."id" < "purchases"."product_id"
 ```
+
