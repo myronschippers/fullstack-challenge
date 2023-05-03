@@ -77,7 +77,7 @@ The ERDs were created using [dbdiagram](https://dbdiagram.io/). The scripts belo
 
 A more basic data structure following strictly the Customer, Purchases, and Claims table structure from the challenge instructions.
 
-![Basic ERD](./data-structure-basic.png)
+![Basic ERD](../documentation/data-structure-basic.png)
 
 *[DBML](https://dbml.dbdiagram.io/docs/) script for [dbdiagram](https://dbdiagram.io/):*
 ```sql
@@ -136,7 +136,7 @@ Ref: "customers"."id" < "purchases"."customer_id"
 
 ### More Complex Structure
 
-![Complex ERD](./data-structure-complex.png)
+![Complex ERD](../documentation/data-structure-complex.png)
 
 *[DBML](https://dbml.dbdiagram.io/docs/) script for [dbdiagram](https://dbdiagram.io/):*
 ```sql
