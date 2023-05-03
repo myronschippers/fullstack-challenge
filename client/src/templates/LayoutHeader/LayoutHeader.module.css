@@ -1,0 +1,17 @@
+.header {
+  box-sizing: border-box;
+  display: flex;
+  column-gap: 1rem;
+  padding: 1.6rem 4rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.headerLogo {
+  width: 6rem;
+}
+
+.headerTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-text-bright);
+}

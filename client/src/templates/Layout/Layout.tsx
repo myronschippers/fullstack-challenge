@@ -1,6 +1,7 @@
 import React from 'react';
 import { LayoutFooter } from '../LayoutFooter';
 import { LayoutHeader } from '../LayoutHeader';
+import styles from './Layout.module.css';
 import { ILayoutProps } from './types';
 
 export const Layout: React.FC<ILayoutProps> = ({
@@ -8,9 +9,9 @@ export const Layout: React.FC<ILayoutProps> = ({
   children,
 }) => {
   return (
-    <div>
+    <div className={styles.layoutContainer}>
       <LayoutHeader />
-      <main>{children}</main>
+      <main className={styles.layoutMain}>{children}</main>
       <LayoutFooter />
     </div>
   );

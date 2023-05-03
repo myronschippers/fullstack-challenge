@@ -1,16 +1,26 @@
+:root {
+  --color-base: #282c34;
+  --color-text-base: #c9d6ef;
+  --color-panel: #364552;
+  --color-text-bright: #efefef;
+  --color-text-dull: #c4c4c4;
+}
+
 html {
   font-size: 10px;
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
+  color: var(--color-text-base);
   font-size: 1.6rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #282c34;
+  background-color: var(--color-base);
 }
 
 code {

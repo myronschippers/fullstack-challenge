@@ -1,12 +1,10 @@
 import React from 'react';
 import { Layout } from '../../templates/Layout';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <Layout>
-      <img src={logo} className="App-logo" alt="logo" />
       <p>
         Edit <code>src/App.tsx</code> and save to reload.
       </p>
