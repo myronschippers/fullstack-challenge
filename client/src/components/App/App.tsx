@@ -1,8 +1,17 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from '../../templates/Layout';
+import { RootState } from '../../redux/store';
+import {
+  decrement,
+  increment,
+} from '../../redux/reducers/counterSlice.reducer';
 import './App.css';
 
 function App() {
+  const dispatch = useDispatch();
+  const count = useSelector((state: RootState) => state.counter.value);
+
   return (
     <Layout>
       <p>
@@ -16,6 +25,11 @@ function App() {
       >
         Learn React
       </a>
+      <div>
+        <button onClick={() => dispatch(decrement())}>-</button>
+        <span>{count}</span>
+        <button onClick={() => dispatch(increment())}>+</button>
+      </div>
     </Layout>
   );
 }
