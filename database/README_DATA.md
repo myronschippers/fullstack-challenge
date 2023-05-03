@@ -21,53 +21,53 @@ environment:
 I recommend Postman for testing the CSV Upload endpoints. For each endpoint follow these same steps to test the upload of the corresponding CSV.
 
 1. enter in the appropriate URL
-  - ![Postman - CSV Upload URL](data-csv-upload-customers-url.png)
+  - ![Postman - CSV Upload URL](../documentation/data-csv-upload-customers-url.png)
 1. click on the **Body** tab under the URL
 1. select the `form-data` from the list of options
 1. under the `Key` column if you hover over the right side of the first field/cell you'll see an option show up that says `Text`
   - click on the `Text` option and select `File`
   - to the right in the in the `Value` column you should now have the option to `Select a File`
-  - ![Postman - CSV Upload URL](data-csv-upload-customers-form-data.png)
+  - ![Postman - CSV Upload URL](../documentation/data-csv-upload-customers-form-data.png)
 
 
 ## Customers
 
-![Postman - CSV Upload for Customers](data-csv-upload-customers.png)
+![Postman - CSV Upload for Customers](../documentation/data-csv-upload-customers.png)
 
 **URL path:**
 - `/csv-upload/customers`
 
-![Postman - CSV Upload, Customers URL](data-csv-upload-customers-url.png)
+![Postman - CSV Upload, Customers URL](../documentation/data-csv-upload-customers-url.png)
 
 > NOTE: Data file can be found at `database/data-files/customers.csv` in the project directory.
 
-![Postman - CSV Upload, Customers Form Data](data-csv-upload-customers-form-data.png)
+![Postman - CSV Upload, Customers Form Data](../documentation/data-csv-upload-customers-form-data.png)
 
 ## Purchases
 
-![Postman - CSV Upload for Purchases](data-csv-upload-purchases.png)
+![Postman - CSV Upload for Purchases](../documentation/data-csv-upload-purchases.png)
 
 **URL path:**
 - `/csv-upload/purchases`
 
-![Postman - CSV Upload, Purchases URL](data-csv-upload-purchases-url.png)
+![Postman - CSV Upload, Purchases URL](../documentation/data-csv-upload-purchases-url.png)
 
 > NOTE: Data file can be found at `database/data-files/purchases.csv` in the project directory.
 
-![Postman - CSV Upload, Purchases Form Data](data-csv-upload-purchases-form-data.png)
+![Postman - CSV Upload, Purchases Form Data](../documentation/data-csv-upload-purchases-form-data.png)
 
 ## Claims
 
-![Postman - CSV Upload for Claims](data-csv-upload-claims.png)
+![Postman - CSV Upload for Claims](../documentation/data-csv-upload-claims.png)
 
 **URL path:**
 - `/csv-upload/claims`
 
-![Postman - CSV Upload, Claims URL](data-csv-upload-claims-url.png)
+![Postman - CSV Upload, Claims URL](../documentation/data-csv-upload-claims-url.png)
 
 > NOTE: Data file can be found at `database/data-files/claims.csv` in the project directory.
 
-![Postman - CSV Upload, Claims Form Data](data-csv-upload-claims-form-data.png)
+![Postman - CSV Upload, Claims Form Data](../documentation/data-csv-upload-claims-form-data.png)
 
 ## Data Structure
 
